@@ -1,0 +1,82 @@
+export default function CaseStudy() {
+    return (
+        <div className="prose">
+            <div className="head"><div><h1>Case study: Laze Vapeshop</h1><p>Capstone business analytics overview</p></div></div>
+
+            <div className="card" style={{ marginBottom: 16 }}>
+                <h3>Company background</h3>
+                <p>
+                    Laze Vapeshop is a small retail shop in Cebu selling disposable vapes, pod systems, mod kits, e-liquids and accessories
+                    through a physical store and social-media orders. Customers must be 18 or older. The owner tracks sales in notebooks and chat
+                    threads, so there is no single view of what sells, what to reorder, or which ads pay off.
+                </p>
+            </div>
+
+            <div className="card" style={{ marginBottom: 16 }}>
+                <h3>Problem statement</h3>
+                <p>
+                    <b>How can Laze spend its limited marketing budget and purchasing money where they return the most revenue?</b>
+                </p>
+                <ul>
+                    <li>Marketing money is split evenly across Facebook, Instagram, TikTok, walk-in promos and referrals, with no measure of which works.</li>
+                    <li>Popular items run out while slow items sit in stock, tying up cash.</li>
+                    <li>There is no forecast, so ordering is guesswork.</li>
+                </ul>
+            </div>
+
+            <div className="card" style={{ marginBottom: 16 }}>
+                <h3>Data collected (five variables, 50+ records each)</h3>
+                <div className="tablewrap">
+                    <table>
+                        <thead><tr><th>Variable</th><th>Records</th><th>Key fields</th></tr></thead>
+                        <tbody>
+                            <tr><td>Customers</td><td>60</td><td>age, city, joined date</td></tr>
+                            <tr><td>Products</td><td>50</td><td>category, price, cost, stock, reorder level</td></tr>
+                            <tr><td>Suppliers</td><td>50</td><td>city, lead time</td></tr>
+                            <tr><td>Marketing campaigns</td><td>50</td><td>channel, spend, start/end dates</td></tr>
+                            <tr><td>Sales transactions</td><td>320</td><td>customer, product, campaign, quantity, total, channel, date</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div className="steps">
+                <div className="card step d">
+                    <b>1. Descriptive</b>
+                    Summarizes 12 months of sales by month, category, city, age group and channel, and computes return on ad spend (ROAS) per marketing channel.
+                    <br /><i>Output passed on: monthly revenue series and ROAS per channel.</i>
+                </div>
+                <div className="card step p">
+                    <b>2. Predictive</b>
+                    Fits a linear regression to monthly revenue, forecasts the next 3 months, and measures how strongly ad spend moves revenue. It converts the forecast into a growth factor.
+                    <br /><i>Output passed on: forecast, growth factor and per-product demand.</i>
+                </div>
+                <div className="card step r">
+                    <b>3. Prescriptive</b>
+                    Recommends how to split a marketing budget in proportion to ROAS, and how many units of each product to reorder given forecast demand, stock and supplier lead time.
+                    <br /><i>Output: actions the owner can take this month.</i>
+                </div>
+            </div>
+
+            <div className="card" style={{ marginBottom: 16 }}>
+                <h3>How the steps connect</h3>
+                <ol>
+                    <li><b>Descriptive → Predictive:</b> the monthly revenue and spend history from step 1 is the training data for the regression in step 2.</li>
+                    <li><b>Predictive → Prescriptive:</b> the forecast growth factor scales each product's recent demand, which sets the restock quantity in step 3.</li>
+                    <li><b>Descriptive → Prescriptive:</b> channel ROAS from step 1 sets the weights for the budget allocation in step 3.</li>
+                </ol>
+                <p>Open <b>Analytics</b> in the menu to see all three steps with live data, and change the budget to see the allocation update.</p>
+            </div>
+
+            <div className="card">
+                <h3>Expected benefits</h3>
+                <ul>
+                    <li>More revenue from the same ad budget by favoring the best-performing channels.</li>
+                    <li>Fewer stock-outs on fast movers and less cash locked in slow movers.</li>
+                    <li>One system for customers, inventory, suppliers, campaigns and sales.</li>
+                </ul>
+                <p style={{ color: 'var(--muted)' }}>Note: the sample data is generated by a seeder for demonstration. Replace it with the shop's real records for real decisions.</p>
+            </div>
+        </div>
+    );
+}
